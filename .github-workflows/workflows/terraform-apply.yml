@@ -22,10 +22,10 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - id: auth
-      uses: google-github-actions/auth@v2.0.0  
+      uses: google-github-actions/auth@v2
       with:
         workload_identity_provider: 'projects/163873313663/locations/global/workloadIdentityPools/github-test-pool/providers/github'
         service_account: 'github-actions-sa@cicd-project-435214.iam.gserviceaccount.com'
