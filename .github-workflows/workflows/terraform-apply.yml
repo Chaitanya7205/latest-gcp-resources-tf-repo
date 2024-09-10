@@ -1,0 +1,37 @@
+name: 'Terraform-apply'
+
+on:
+  push:
+    branches: 
+      - "main"
+    paths:
+      - "**"  # This ensures the workflow runs for any changes
+
+permissions:
+  contents: read
+  id-token: 'write'
+
+jobs:
+  terraform:
+    name: 'Terraform apply'
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - id: auth
+      uses: google-github-actions/auth@v2.0.0  
+      with:
+        workload_identity_provider: 'projects/163873313663/locations/global/workloadIdentityPools/github-test-pool/providers/github'
+        service_account: 'github-actions-sa@cicd-project-435214.iam.gserviceaccount.com'
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
