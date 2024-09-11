@@ -27,7 +27,7 @@ jobs:
       uses: actions/checkout@v3
 
     - id: auth
-      uses: google-github-actions/auth@v2.0.0  
+      uses: google-github-actions/auth@v2.0.0
       with:
         workload_identity_provider: 'projects/899750260822/locations/global/workloadIdentityPools/new-github-workload-pool/providers/my-github'
         service_account: 'github-actions-sa@cicd-project-435214.iam.gserviceaccount.com'
