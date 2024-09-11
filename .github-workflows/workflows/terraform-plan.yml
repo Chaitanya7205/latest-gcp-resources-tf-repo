@@ -24,12 +24,12 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
 
     - id: auth
-      uses: google-github-actions/auth@v2 
+      uses: google-github-actions/auth@v2.0.0
       with:
-        workload_identity_provider: 'projects/163873313663/locations/global/workloadIdentityPools/github-test-pool/providers/github'
+        workload_identity_provider: 'projects/899750260822/locations/global/workloadIdentityPools/new-github-workload-pool/providers/my-github'
         service_account: 'github-actions-sa@cicd-project-435214.iam.gserviceaccount.com'
 
     - name: Terraform Init
